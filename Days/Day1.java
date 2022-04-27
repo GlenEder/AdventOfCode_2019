@@ -3,21 +3,19 @@ package Days;
 import Utils.FileHandler;
 import Utils.StopWatch;
 
-public class Day1 implements Day {
+public class Day1 extends Day {
 
     private int part1total = 0;
     private int part2total = 0;
-    private double uptime = 0.0;
 
-    public void Compute(FileHandler f) {
-        //Start stop watch
-        StopWatch watch = new StopWatch();
+    public Day1(int day) {
+        super(day);
+    }
 
-        //open today's input file
-        f.CreateReader("InputFiles/day1.txt");
-
+    @Override
+    public void Compute() {
         String s;
-        while ( (s = f.GetNextLine()) != null ) {
+        while ( (s = this.GetFileHandler().GetNextLine()) != null ) {
             //parse int from line
             int i = Integer.parseInt(s);
             i = operate(i);
@@ -31,12 +29,8 @@ public class Day1 implements Day {
         //add part1 to part2's total
         part2total += part1total;
 
-        //record time
-        uptime = watch.TimeSinceMS();
-    }
-
-    public void PrintResults() {
-        System.out.printf("++++Day 1:++++\nPart 1: %d\nPart 2: %d\nTime: %.4fms", part1total, part2total, uptime);
+        //end day computations, print results
+        this.EndDay(part1total, part2total);
     }
 
     private int operate(int i) {
