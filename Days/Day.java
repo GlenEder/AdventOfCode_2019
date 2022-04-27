@@ -29,7 +29,7 @@ public abstract class Day {
 
     //This is expected to be called at the end of the compute method
     public void PrintResults(int part1total, int part2total) {
-        System.out.printf("++++Day %d:++++\nPart 1: %d\nPart 2: %d\nTime: %.4fms", this.day, part1total, part2total, this.GetCpuTime());
+        System.out.printf("++++Day %d:++++\nPart 1: %d\nPart 2: %d\nTime: %.4fms\n", this.day, part1total, part2total, this.GetCpuTime());
     }
 
     protected void finalize() {

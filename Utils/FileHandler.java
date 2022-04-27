@@ -56,4 +56,28 @@ public class FileHandler {
         }
         return null;
     }
+
+    //Assumes line is numbers seperated by provided delim
+    public int[] ReadlineToIntArray(String delim) {
+        //Check that reader has been created
+        if (this.reader == null) {
+            System.out.println("ERROR: Buffered reader is null.");
+            return null;
+        }
+
+        try {
+            String line = this.reader.readLine();
+            String[] nums = line.split(delim);
+            int[] numbers = new int[nums.length];
+            for (int i = 0; i < nums.length; i++) {
+                numbers[i] = Integer.parseInt(nums[i]);
+            }
+
+            return numbers;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
